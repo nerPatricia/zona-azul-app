@@ -53,13 +53,19 @@ ion-content {
     height: 2.7em !important;
     font-size: 1em;
     font-weight: 500;
-    color: var(--ion-color-primary);
+    color: var(--ion-color-tertiary);
     background-color: var(--ion-color-light);
 }
 
 // tira a borda dos input e deixa igual o ion-input
 input {
     border: 0;
+}
+
+.error-message {
+    font-weight: bold;
+    color: #b94a48;
+    font-size: 10px;
 }
 
 // padroniza o tamanho da fonte

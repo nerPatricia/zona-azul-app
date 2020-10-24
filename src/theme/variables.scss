@@ -40,10 +40,12 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // grey: #e8e8e8,
 // dark_grey: #bdbdbd
 :root {
-  --ion-color-primary: #34495c;
-  --ion-color-secondary: #253442;
+  --ion-color-primary: #f9f9f9;
+  --ion-color-secondary: #0073c8;
+  --ion-color-tertiary: #0c4169;
   --ion-color-grey: #e8e8e8;
   --ion-color-dark-grey: #bdbdbd;
+  --ion-color-grey-text: #838181;
   --ion-color-orange: #da8d36;
 
   /** success **/

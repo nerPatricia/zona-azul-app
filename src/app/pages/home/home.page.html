@@ -1,16 +1,39 @@
 <!-- <app-header title="investigacao-indiscreta" [showButtonPerfil]="true"></app-header> -->
+<!-- <p *ngIf="verifyEmpty();" text-center style=" color: grey !important; font-weight: bolder; font-size: 1.8rem;">
+      Não há eventos cadastrados
+    </p> 
+https://www.urbs.curitiba.pr.gov.br/EstaR
+https://curitiba.zazuldigital.com.br/
+https://play.google.com/store/apps/details?id=br.com.estardigital.curitiba.motorista
+https://play.google.com/store/apps/details?id=com.zonaazulfacil.sp
+https://elparking.com/bra
+https://www.zuldigital.com.br/estar-curitiba?utm_source=urbs&utm_medium=site
+https://play.google.com/store/apps/details?id=br.com.zuldigital.cwb&utm_source=site&utm_medium=landingpage&utm_campaign=institucional
+https://play.google.com/store/apps/details?id=br.com.zuldigital  
+-->
 
 <ion-content class="ion-padding">
-  <ion-grid>
+  <ion-grid class="top-grid">
+    <ion-row>
+      <ion-col style="align-self: center;">
+        <div class="ion-text-center"><img src="assets/icon/icon2.png" /></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="bottom-grid">
     <ion-row>
       <ion-col style="text-align: center;">
-        <button class="btn" primary ion-button (click)="comecar()">
-          Começar
+        <button class="btn" primary ion-button (click)="cadastrar()">
+          Cadastrar
         </button>
       </ion-col>
     </ion-row>
-    <!-- <p *ngIf="verifyEmpty();" text-center style=" color: grey !important; font-weight: bolder; font-size: 1.8rem;">
-      Não há eventos cadastrados
-    </p> -->
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <button class="btn" primary ion-button (click)="login()">
+          Já tenho uma conta
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

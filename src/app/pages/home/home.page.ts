@@ -11,7 +11,11 @@ export class HomePage implements OnInit {
 
   ngOnInit() {}
 
-  comecar() {
-    // this.navCtrl.navigateRoot(['introducao']);
+  cadastrar() {
+    this.navCtrl.navigateForward(['cadastrar-usuario']);
+  }
+
+  login() {
+
   }
 }
