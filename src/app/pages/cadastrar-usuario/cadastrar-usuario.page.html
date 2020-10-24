@@ -2,14 +2,78 @@
 
 <ion-content class="ion-padding">
   <ion-grid>
-    <ion-row>
+    <ion-row class="ion-align-items-center ion-text-center ion-justify-content-center">
       <ion-col>
-
+        <h2 class="title">Cadastre-se</h2>
+        <span style="font-size: 0.9em; color: white">Por favor, preencha os campos abaixo</span>
       </ion-col>
     </ion-row>
+
+    <ion-row style="height: 100%; align-items: center;">
+      <ion-col>
+        <ion-list id="form" [formGroup]="form">
+          <ion-item>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-input autocomplete type="text" formControlName="nome" placeholder="Nome"> </ion-input>
+          </ion-item>
+          <p [hidden]="!isInvalid('nome')" class="error-message ion-text-center">
+            {{ getErrorMessage('nome') }}
+          </p>
+
+          <ion-item>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-input autocomplete type="text" formControlName="sobrenome" placeholder="Sobrenome"></ion-input>
+          </ion-item>
+          <p [hidden]="!isInvalid('sobrenome')" class="error-message ion-text-center">
+            {{ getErrorMessage('sobrenome') }}
+          </p>
+
+          <ion-item>
+            <ion-icon name="mail-outline"></ion-icon>
+            <ion-input autocomplete type="text" formControlName="documento" placeholder="CPF"></ion-input>
+          </ion-item>
+          <p [hidden]="!isInvalid('documento')" class="error-message ion-text-center">
+            {{ getErrorMessage('documento') }}
+          </p>
+
+          <ion-item>
+            <ion-icon name="mail-outline"></ion-icon>
+            <ion-input autocomplete type="email" formControlName="email" placeholder="E-mail"></ion-input>
+          </ion-item>
+          <p [hidden]="!isInvalid('email')" class="error-message ion-text-center">
+            {{ getErrorMessage('email') }}
+          </p>
+
+          <ion-item>
+            <ion-icon id="input-icon" name="call-outline"></ion-icon>
+            <input name="phone" formControlName="numero" placeholder="Celular" mask="(00)00000-0000" />
+          </ion-item>
+          <p [hidden]="!isInvalid('numero')" class="error-message ion-text-center">
+            {{ getErrorMessage('numero') }}
+          </p>
+
+          <ion-item>
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-input type="password" formControlName="senha" placeholder="Senha"></ion-input>
+          </ion-item>
+          <p [hidden]="!isInvalid('senha')" class="error-message ion-text-center">
+            {{ getErrorMessage('senha') }}
+          </p>
+
+          <ion-item>
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-input type="password" formControlName="confirmaSenha" placeholder="Confirmar Senha"></ion-input>
+          </ion-item>
+          <p [hidden]="!isInvalid('confirmaSenha')" class="error-message ion-text-center">
+            {{ getErrorMessage('confirmaSenha') }}
+          </p>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
     <ion-row>
-      <ion-col style="text-align: center; margin-top: 10px;">
-        <button class="btn" primary ion-button (click)="avancar()">
+      <ion-col class="ion-text-center">
+        <button class="btn" primary ion-button expand="block" (click)="avancar()">
           Avançar
         </button>
       </ion-col>
