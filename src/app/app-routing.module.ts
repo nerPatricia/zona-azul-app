@@ -18,6 +18,11 @@ const routes: Routes = [
       './pages/cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule'
   },
   {
+    path: 'dashboard',
+    loadChildren:
+      './pages/dashboard/dashboard.module#DashboardPageModule'
+  },
+  {
     path: 'reservar-vaga',
     loadChildren:
       './pages/reservar-vaga/reservar-vaga.module#ReservarVagaPageModule'
