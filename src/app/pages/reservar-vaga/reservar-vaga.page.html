@@ -1,17 +1,21 @@
-<!-- <app-header title="Caso 60"></app-header> -->
+<app-header showButtonBack="/dashboard" title="Saldo: 30" showButtonAddCredits="true"></app-header>
 
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-
+<ion-content class="ion-no-padding">
+  <ion-grid class="ion-no-padding">
+    <ion-row class="car-info">
+      <ion-col style="text-align: center; padding: 14px 0;">
+        <span class="title">ABC 1234</span>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col style="text-align: center;">
-        <button class="btn" primary ion-button (click)="avancar()">
-          Avançar
-        </button>
+    <ion-row style="height: 200px;">
+      <ion-col *ngIf="!mapErrorFlag">
+        <div id="mapId" style="width: 100%; height: 100%">
+        </div>
+      </ion-col>
+      <ion-col *ngIf="mapErrorFlag">
+        <p text-center style=" color: grey !important; font-weight: bolder; font-size: 1.2rem;">
+          Não foi possível carregar o endereço. Por favor, verifique se a localização do disposivo está ativada.
+        </p>
       </ion-col>
     </ion-row>
   </ion-grid>

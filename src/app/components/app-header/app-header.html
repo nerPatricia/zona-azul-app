@@ -9,11 +9,15 @@
     </ion-buttons>
 
     <ion-buttons *ngIf="showButtonMenu" slot="start">
-      <ion-icon style="margin-left: 10px" class="icon" name="menu"></ion-icon>
+      <ion-icon style="margin-left: 10px; margin-right: 0;" class="icon" name="menu"></ion-icon>
     </ion-buttons>
 
     <ion-buttons *ngIf="showButtonHelp" slot="end" (click)="helpModal()">
       <ion-icon class="icon" name="help-circle"></ion-icon>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="showButtonAddCredits" slot="end" (click)="goToAddCredits()">
+      <ion-icon class="icon" name="add-circle"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

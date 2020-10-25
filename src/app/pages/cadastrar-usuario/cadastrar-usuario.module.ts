@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastrarUsuarioPage } from './cadastrar-usuario.page';
 import { Routes, RouterModule } from '@angular/router';
 import { AppHeaderModule } from 'src/app/components/app-header/app-header.module';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const routes: Routes = [
   {
@@ -20,6 +19,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    AppHeaderModule,
     // NgxMaskModule.forRoot(),
     RouterModule.forChild(routes)
   ],

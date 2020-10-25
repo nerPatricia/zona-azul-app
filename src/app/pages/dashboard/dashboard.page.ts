@@ -13,5 +13,7 @@ export class DashboardPage implements OnInit {
 
   addCredits() {}
 
-  reservarVaga() {}
+  reservarVaga() {
+    this.navCtrl.navigateForward(['reservar-vaga']);
+  }
 }
