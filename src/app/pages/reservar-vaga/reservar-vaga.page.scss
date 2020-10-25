@@ -1,12 +1,9 @@
-b {
-    font-size: 14px;
-}
+.car-info {
+    background-color: white;
 
-p {
-    text-align: justify;
-}
-
-h3,
-h4 {
-    text-align: center;
+    .title {
+        font-size: 2em;
+        font-weight: 500;
+        color: var(--ion-color-dark-text);
+    }
 }

@@ -16,9 +16,14 @@ export class AppHeaderComponent {
   @Input()
   showButtonMenu: boolean = false;
   @Input()
+  showButtonAddCredits: boolean = false;
+  @Input()
   title: string;
   @Input()
   iconTitle: string = '';
+
+  // TODO: Juntar os botões do mesmo lado em um só e usar função verificadora
+  // diminuindo a qtd de flags
 
   @Output()
   public eventEmitter: EventEmitter<any> = new EventEmitter();
@@ -30,6 +35,11 @@ export class AppHeaderComponent {
   ) {}
 
   helpModal() {
+    this.navCtrl.navigateForward('/');
+  }
+
+  goToAddCredits() {
+
   }
 
   logout() {

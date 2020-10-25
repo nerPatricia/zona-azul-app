@@ -27,13 +27,13 @@
       "@pages/*": ["src/pages/*"],
       "@pipes/*": ["src/pipes/*"],
       "@providers/*": ["src/providers/*"],
-      "@helpers/*":["src/helpers/*"]
+      "@helpers/*": ["src/helpers/*"]
     },
     "types": [
-        "node"
+      "node"
     ],
     "typeRoots": [
-        "node_modules/@types"
+      "node_modules/@types"
     ]
   },
   "include": [
