@@ -4,7 +4,7 @@ ion-header {
 
   ion-toolbar {
     ion-buttons {
-      color: white;
+      color: var(--ion-color-grey-text);
 
       .icon {
         font-size: xx-large;
@@ -14,7 +14,7 @@ ion-header {
 
     ion-title {
       font-weight: 400;
-      color: white;
+      color: var(--ion-color-grey-text);
       text-align: center;
       padding-top: 10px;
       // padding-left: 0; // tirar no ios
