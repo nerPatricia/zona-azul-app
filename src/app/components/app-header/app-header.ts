@@ -12,9 +12,9 @@ export class AppHeaderComponent {
   @Input()
   showButtonBack: string = '';
   @Input()
-  showButtonPerfil: boolean = false;
+  showButtonHelp: boolean = false;
   @Input()
-  showButtonLogout: boolean = false;
+  showButtonMenu: boolean = false;
   @Input()
   title: string;
   @Input()
@@ -29,8 +29,7 @@ export class AppHeaderComponent {
     private authService: AuthService
   ) {}
 
-  goToPerfil() {
-    this.router.navigateByUrl('/user-detail');
+  helpModal() {
   }
 
   logout() {
