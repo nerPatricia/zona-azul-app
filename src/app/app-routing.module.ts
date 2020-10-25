@@ -4,24 +4,24 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./pages/home/home.module').then(m => m.HomePageModule)
+    loadChildren:
+      './pages/home/home.module#HomePageModule'
   },
   {
     path: 'login',
-    loadChildren: () =>
-      import('./pages/login/login.module').then(m => m.LoginPageModule)
+    loadChildren:
+      './pages/login/login.module#LoginPageModule'
   },
   {
     path: 'cadastrar-usuario',
-    loadChildren: () =>
-      import('./pages/cadastrar-usuario/cadastrar-usuario.module').then(m => m.CadastrarUsuarioPageModule)
+    loadChildren:
+      './pages/cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule'
   },
   {
     path: 'reservar-vaga',
-    loadChildren: () =>
-      import('./pages/reservar-vaga/reservar-vaga.module').then(m => m.ReservarVagaPageModule)
-  }
+    loadChildren:
+      './pages/reservar-vaga/reservar-vaga.module#ReservarVagaPageModule'
+  },
 ];
 
 @NgModule({

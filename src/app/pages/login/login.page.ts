@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 
@@ -7,8 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['login.page.scss'],
 })
 export class LoginPage {
-  constructor(private navCtrl: NavController) {}
+  userData: any = {
+    email: '',
+    password: ''
+  };
+  showPassword: boolean = false;
 
-  avancar() {
+  constructor(private router: Router) {}
+
+  ngOnInit() {}
+
+  login() {
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  esqueciSenha() {
+    this.router.navigateByUrl('/esqueci-senha');
   }
 }

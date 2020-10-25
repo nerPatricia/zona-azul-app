@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { LoginPage } from './login.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     IonicModule,
     AppHeaderModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
   providers: [LoadingService],
