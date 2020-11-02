@@ -34,7 +34,7 @@ export class UtilitiesService {
 
   async estacionar(estacionarData) {
     const auth = await this.authService.getAuthData();
-    const url = this.url + '/get-carros';
+    const url = this.url + '/estacionar';
     const headers = new HttpHeaders({ 'token': auth.token });
     return this.http.post(url, estacionarData, { headers }).toPromise();
   }

@@ -1,6 +1,7 @@
 import { UtilitiesService } from './../../service/utilities.service';
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,11 @@ export class DashboardPage  {
   saldo = "0";
   carrosList = [];
 
-  constructor(private navCtrl: NavController, private utilitiesService: UtilitiesService) {}
+  constructor(
+    private navCtrl: NavController, 
+    private utilitiesService: UtilitiesService,
+    private router: Router
+  ) {}
 
   ionViewDidEnter() {
     this.utilitiesService.getCarros().then(
@@ -36,8 +41,14 @@ export class DashboardPage  {
     this.navCtrl.navigateForward(['adicionar-creditos']);
   }
 
-  reservarVaga() {
-    this.navCtrl.navigateForward(['reservar-vaga']);
+  reservarVaga(carro) {
+    const navigationExtras: NavigationExtras = {
+      state: { 
+        carroData: carro,
+        saldo: this.saldo
+       }
+    };
+    this.router.navigate(['reservar-vaga'], navigationExtras);
   }
 
   cadastrarVeiculo() {
