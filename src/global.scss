@@ -46,6 +46,11 @@ ion-content {
     --highlight-background: none !important;
 }
 
+ion-radio {
+    --color-checked: var(--ion-color-secondary);
+    --color: var(--ion-color-dark-text);
+}
+
 // layout do botão padrão
 .btn {
     border-radius: 16px !important;

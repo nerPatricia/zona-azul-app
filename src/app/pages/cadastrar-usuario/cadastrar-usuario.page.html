@@ -29,11 +29,12 @@
           </p>
 
           <ion-item>
-            <ion-icon name="mail-outline"></ion-icon>
-            <ion-input autocomplete type="text" formControlName="documento" placeholder="CPF"></ion-input>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-input autocomplete type="text" formControlName="cpf" placeholder="CPF" mask="000.000.000-00">
+            </ion-input>
           </ion-item>
-          <p [hidden]="!isInvalid('documento')" class="error-message ion-text-center">
-            {{ getErrorMessage('documento') }}
+          <p [hidden]="!isInvalid('cpf')" class="error-message ion-text-center">
+            {{ getErrorMessage('cpf') }}
           </p>
 
           <ion-item>
@@ -46,10 +47,10 @@
 
           <ion-item>
             <ion-icon id="input-icon" name="call-outline"></ion-icon>
-            <input name="phone" formControlName="numero" placeholder="Celular" mask="(00)00000-0000" />
+            <input name="phone" formControlName="celular" placeholder="Celular" mask="(00)00000-0000" />
           </ion-item>
-          <p [hidden]="!isInvalid('numero')" class="error-message ion-text-center">
-            {{ getErrorMessage('numero') }}
+          <p [hidden]="!isInvalid('celular')" class="error-message ion-text-center">
+            {{ getErrorMessage('celular') }}
           </p>
 
           <ion-item>

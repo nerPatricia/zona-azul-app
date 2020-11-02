@@ -1,7 +1,8 @@
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import * as Leaflet from 'leaflet';
-import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-reservar-vaga',
@@ -12,32 +13,31 @@ export class ReservarVagaPage {
   map: Leaflet.Map;
   watchLocalization: any;
   mapErrorFlag = false;
-  address; // TODO: pegar a localização atual do celular
+  address = {
+    latitude: 0,
+    longitude: 0
+  };
 
-  constructor(private navCtrl: NavController, private nativeGeocoder: NativeGeocoder) {}
+  constructor(
+    private navCtrl: NavController, 
+    private nativeGeocoder: NativeGeocoder,
+    private geolocation: Geolocation
+  ) {}
 
   ionViewDidEnter() { 
-    this.getEventLocalization();
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.address.latitude = resp.coords.latitude;
+      this.address.longitude = resp.coords.longitude;
+
+      this.generateMap();
+     }).catch((error) => {
+       console.log('Error getting location', error);
+       this.mapErrorFlag = true;
+     });
   }
 
-  getEventLocalization() {
-    let options: NativeGeocoderOptions = {
-      useLocale: true,
-      maxResults: 5
-    };
-  
-  this.nativeGeocoder.forwardGeocode(this.address, options)
-    .then((result: NativeGeocoderResult[]) => {
-      this.leafletMap(result[0].latitude,  result[0].longitude);
-    }).catch(
-      (error: any) => {
-        console.log(error);
-        this.mapErrorFlag = true;
-    });
-  }
-
-  getLocalization() {
-    
+  generateMap() {
+    this.leafletMap(this.address.latitude, this.address.longitude);
   }
 
   leafletMap(latitude, longitude) {
@@ -56,7 +56,7 @@ export class ReservarVagaPage {
       attribution: 'nome_app © LeafLet',
     }).addTo(this.map);
 
-    const markPoint = Leaflet.marker([latitude, longitude], { icon: icon });
+    const markPoint = Leaflet.marker([latitude, longitude], {icon: icon});
     markPoint.bindPopup('<p>placa_carro</p>');
     this.map.addLayer(markPoint);
   }

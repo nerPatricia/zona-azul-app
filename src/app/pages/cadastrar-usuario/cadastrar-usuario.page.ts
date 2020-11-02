@@ -1,6 +1,9 @@
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import { NavController } from "@ionic/angular";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cadastrar-usuario',
@@ -10,7 +13,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class CadastrarUsuarioPage implements OnInit {
   form: FormGroup;
 
-  constructor(private navCtrl: NavController, private formBuilder: FormBuilder) {}
+  constructor(
+    private navCtrl: NavController, 
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+    ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group(
@@ -20,9 +28,9 @@ export class CadastrarUsuarioPage implements OnInit {
           Validators.minLength(2),
         ]),
         sobrenome: new FormControl(""),
-        numero: new FormControl("", [Validators.required]),
-        documento: new FormControl(""),
+        cpf: new FormControl(""),
         email: new FormControl("", [Validators.required, Validators.email]),
+        celular: new FormControl("", [Validators.required]),
         senha: new FormControl("", [Validators.required]),
         confirmaSenha: new FormControl("", [Validators.required]),
       },
@@ -77,31 +85,23 @@ export class CadastrarUsuarioPage implements OnInit {
     );
   }
 
-  formataEnvio(userData) {
-    const numero = userData.numero.replace(/[ ().-]/g, "");
-    const newUserData = {
-      nome: userData.nome,
-      sobrenome: userData.sobrenome,
-      email: userData.email,
-      senha: userData.senha,
-      celular: {
-        tipo: "celular",
-        ddd: numero.substring(0, 2),
-        numero: numero.substring(2, numero.length),
-        ramal: "1",
-        pais: "+55",
-      },
-    };
-
-    return newUserData;
-  }
-
   avancar() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
 
-    const userData = this.formataEnvio(this.form.value);
+    this.authService.registerUser(this.form.value).then(
+      (response) => {
+        Swal.fire('Usuario cadastrado com sucesso.').then(
+          () => {
+            this.router.navigateByUrl('/login');
+          }
+        );
+      }, error => {
+        Swal.fire('Ocorreu um erro ao cadastrar usuário.');
+        console.log(error);
+      }
+    );
   }
 }

@@ -1,3 +1,5 @@
+import { environment } from './../../environments/environment';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
@@ -5,7 +7,19 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private storage: Storage) { }
+  url = environment.url;
+
+  constructor(private storage: Storage, private http: HttpClient) { }
+
+  async login(email, senha) {
+    const url = this.url + '/login';
+    return this.http.post(url, { email, senha },).toPromise();
+  }
+
+  async registerUser(userData) {
+    const url = this.url + '/cadastrar-usuario';
+    return this.http.post(url, userData,).toPromise();
+  }
 
   async saveAuth(authData) {
     await this.storage.set('authData', authData);

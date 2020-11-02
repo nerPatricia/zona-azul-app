@@ -7,7 +7,7 @@
         <span class="title">ABC 1234</span>
       </ion-col>
     </ion-row>
-    <ion-row style="height: 200px;">
+    <!-- <ion-row style="height: 200px;">
       <ion-col *ngIf="!mapErrorFlag">
         <div id="mapId" style="width: 100%; height: 100%">
         </div>
@@ -17,6 +17,33 @@
           Não foi possível carregar o endereço. Por favor, verifique se a localização do disposivo está ativada.
         </p>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
+    <p>Quanto tempo você deseja estacionar?</p>
+    <ion-list>
+      <ion-radio-group value="estacionarHoras">
+        <ion-item lines="none">
+          <ion-label>1 hora - R$ 3,00</ion-label>
+          <ion-radio slot="start" value="1"></ion-radio>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>2 hora - R$ 6,00</ion-label>
+          <ion-radio slot="start" value="2"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <!-- <ion-row style="justify-content: center;">
+      <ion-col size="10" class="infocar-card" style="display: flex">
+        <ion-col size="2">
+
+        </ion-col>
+        <ion-col size="5">
+          <span class="title">1 hora</span>
+        </ion-col>
+        <ion-col size="5">
+          <span class="title">R$3</span>
+        </ion-col>
+      </ion-col>
+    </ion-row> -->
   </ion-grid>
 </ion-content>

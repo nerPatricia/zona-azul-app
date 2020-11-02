@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -5,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastrarUsuarioPage } from './cadastrar-usuario.page';
 import { Routes, RouterModule } from '@angular/router';
 import { AppHeaderModule } from 'src/app/components/app-header/app-header.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 const routes: Routes = [
   {
@@ -20,9 +22,12 @@ const routes: Routes = [
     IonicModule,
     ReactiveFormsModule,
     AppHeaderModule,
-    // NgxMaskModule.forRoot(),
+    NgxMaskModule.forRoot(),
     RouterModule.forChild(routes)
   ],
-  declarations: [CadastrarUsuarioPage]
+  declarations: [CadastrarUsuarioPage],
+  providers: [
+    AuthService
+  ]
 })
 export class CadastrarUsuarioPageModule {}
