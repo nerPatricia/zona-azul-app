@@ -8,8 +8,8 @@
       <ion-back-button [defaultHref]="showButtonBack"></ion-back-button>
     </ion-buttons>
 
-    <ion-buttons *ngIf="showButtonMenu" slot="start">
-      <ion-icon style="margin-left: 10px; margin-right: 0;" class="icon" name="menu"></ion-icon>
+    <ion-buttons *ngIf="showButtonLogout" slot="start" (click)="logout()">
+      <ion-icon style="margin-left: 10px; margin-right: 0;" class="icon" name="log-out-outline"></ion-icon>
     </ion-buttons>
 
     <ion-buttons *ngIf="showButtonHelp" slot="end" (click)="helpModal()">

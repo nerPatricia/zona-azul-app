@@ -2,6 +2,7 @@ import { UtilitiesService } from './../../service/utilities.service';
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { format, isBefore } from 'date-fns';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,7 @@ import { NavigationExtras, Router } from '@angular/router';
 export class DashboardPage  {
   saldo = "0";
   carrosList = [];
+  today = new Date();
 
   constructor(
     private navCtrl: NavController, 
@@ -18,10 +20,12 @@ export class DashboardPage  {
     private router: Router
   ) {}
 
+  startTime() {}
+
   ionViewDidEnter() {
     this.utilitiesService.getCarros().then(
       (response: any) => {
-        this.carrosList = response.carros;
+        this.carrosList = response.response;
         console.log(response);
       }, error => {
         console.log(error);
@@ -53,5 +57,13 @@ export class DashboardPage  {
 
   cadastrarVeiculo() {
     this.navCtrl.navigateForward(['cadastrar-veiculo']);
+  }
+
+  getHoraFinal(estacionado) {
+    if (isBefore(new Date(estacionado.hora_fim), this.today)) {
+      return;
+    }
+    const horaCerta = format(new Date(estacionado.hora_fim), "HH:mm");
+    return horaCerta;
   }
 }
