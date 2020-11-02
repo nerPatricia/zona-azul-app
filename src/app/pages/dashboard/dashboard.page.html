@@ -16,24 +16,11 @@
       Você não possui nenhum veiculo cadastrado ainda. Clique aqui para cadastrar.
     </p>  -->
     <ion-row style="justify-content: center;">
-      <ion-col size="10" class="infocar-card" style="display: flex">
+      <ion-col size="10" class="infocar-card" style="display: flex" *ngFor="let carro of carrosList">
         <ion-col size="5">
-          <span class="title">ABC 1234</span>
+          <span class="title">{{ carro.placa.toUpperCase() }}</span>
           <br />
-          <span class="car">CELTA</span>
-        </ion-col>
-        <ion-col size="7">
-          <button class="btn" primary ion-button (click)="reservarVaga()">
-            Estacionar
-            <ion-icon name="time-outline"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-col>
-      <ion-col size="10" class="infocar-card" style="display: flex">
-        <ion-col size="5">
-          <span class="title">DEF 5678</span>
-          <br />
-          <span class="car">GOL</span>
+          <span class="car">{{ carro.modelo.toUpperCase() }}</span>
         </ion-col>
         <ion-col size="7">
           <button class="btn" primary ion-button (click)="reservarVaga()">

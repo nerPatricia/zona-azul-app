@@ -93,13 +93,13 @@ export class CadastrarUsuarioPage implements OnInit {
 
     this.authService.registerUser(this.form.value).then(
       (response) => {
-        Swal.fire('Usuario cadastrado com sucesso.').then(
+        Swal.fire('Sucesso', 'Usuario cadastrado com sucesso.', 'success').then(
           () => {
             this.router.navigateByUrl('/login');
           }
         );
       }, error => {
-        Swal.fire('Ocorreu um erro ao cadastrar usuário.');
+        Swal.fire('Ocorreu um erro ao cadastrar usuário.', 'error');
         console.log(error);
       }
     );

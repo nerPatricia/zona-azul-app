@@ -26,7 +26,7 @@ export class LoginPage {
         await this.authService.saveAuth(response);
         this.router.navigateByUrl('/dashboard');
       }, error => {
-        Swal.fire('Usuário e/ou senha inválidos.');
+        Swal.fire(error, 'Usuário e/ou senha inválidos.');
         console.log(error);
       }
     );

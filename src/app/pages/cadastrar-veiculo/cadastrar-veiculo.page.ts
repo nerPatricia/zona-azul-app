@@ -1,3 +1,6 @@
+import { ToastService } from './../../service/toast.service';
+import Swal from 'sweetalert2';
+import { UtilitiesService } from './../../service/utilities.service';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,17 +12,37 @@ import { Component, OnInit } from '@angular/core';
 export class CadastrarVeiculoPage implements OnInit {
   placaData: any = {
     placa: '',
-    tipoVeiculo: '',
+    tipo: '',
     marca: '',
     modelo: ''
   };
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private utilitiesService: UtilitiesService, private toast: ToastService) {}
 
   ngOnInit() {}
 
+  getTipo(tipo) {
+    this.placaData.tipo = tipo;
+  }
+
   cadastrar() {
-    this.navCtrl.navigateForward(['dashboard']);
+    if (this.placaData.placa == '' || this.placaData.tipo == '' || this.placaData.marca == '' || this.placaData.modelo == '') {
+      this.toast.present({ message : 'Preencha todos os campos para continuar.' });
+      return;
+    }
+
+    this.utilitiesService.cadCarros(this.placaData).then(
+      (response) => {
+        console.log("entrou no respose");
+        Swal.fire('Sucesso', 'Carro cadastrado com sucesso.', 'success').then(
+          () => {
+            this.navCtrl.navigateForward(['dashboard']);
+          }
+        );
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   back() {

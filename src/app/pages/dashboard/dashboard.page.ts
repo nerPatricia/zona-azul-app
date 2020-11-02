@@ -1,23 +1,22 @@
 import { UtilitiesService } from './../../service/utilities.service';
-import Swal from 'sweetalert2';
 import { NavController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'dashboard.page.html',
   styleUrls: ['dashboard.page.scss'],
 })
-export class DashboardPage implements OnInit {
+export class DashboardPage  {
   saldo = "0";
-  carrosList = {};
+  carrosList = [];
 
   constructor(private navCtrl: NavController, private utilitiesService: UtilitiesService) {}
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.utilitiesService.getCarros().then(
-      (response) => {
-        this.carrosList = response;
+      (response: any) => {
+        this.carrosList = response.carros;
         console.log(response);
       }, error => {
         console.log(error);

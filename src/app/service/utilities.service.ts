@@ -28,6 +28,7 @@ export class UtilitiesService {
 
   async cadCarros(carroData) {
     const auth = await this.authService.getAuthData();
+    console.log(auth);
     const url = this.url + '/cadastrar-carro';
     const headers = new HttpHeaders({ 'token': auth.token });
     return this.http.post(url, carroData, { headers }).toPromise();

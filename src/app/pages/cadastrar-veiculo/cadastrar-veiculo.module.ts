@@ -1,3 +1,4 @@
+import { ToastService } from './../../service/toast.service';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,6 +25,7 @@ const routes: Routes = [
     NgxMaskModule.forRoot(),
     RouterModule.forChild(routes)
   ],
-  declarations: [CadastrarVeiculoPage]
+  declarations: [CadastrarVeiculoPage],
+  providers: [ToastService]
 })
 export class CadastrarVeiculoPageModule {}
