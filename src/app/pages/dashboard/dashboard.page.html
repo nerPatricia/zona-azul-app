@@ -1,4 +1,4 @@
-<app-header showButtonMenu="true" title="nome_app" showButtonHelp="true"></app-header>
+<app-header showButtonLogout="true" title="nome_app"></app-header>
 
 <ion-content class="ion-padding">
   <ion-grid>
@@ -12,32 +12,20 @@
         <ion-icon name="add-circle" (click)="addCredits()"></ion-icon>
       </ion-col>
     </ion-row>
-    <!-- <p *ngIf="verifyEmpty();" text-center style=" color: grey !important; font-weight: bolder; font-size: 1.8rem;">
-      Você não possui nenhum veiculo cadastrado ainda. Clique aqui para cadastrar.
-    </p>  -->
+    <p *ngIf="carrosList.length == 0;" text-center
+      style=" color: grey !important; font-weight: bolder; font-size: 1.8rem;">
+      Você não possui nenhum veiculo cadastrado ainda. Clique a seguir para cadastrar.
+    </p>
     <ion-row style="justify-content: center;">
-      <ion-col size="10" class="infocar-card" style="display: flex">
+      <ion-col size="10" class="infocar-card" style="display: flex" *ngFor="let carro of carrosList">
         <ion-col size="5">
-          <span class="title">ABC 1234</span>
+          <span class="title">{{ carro.carro.placa.toUpperCase() }}</span>
           <br />
-          <span class="car">CELTA</span>
+          <span class="car">{{ carro.carro.modelo.toUpperCase() }}</span>
         </ion-col>
         <ion-col size="7">
-          <button class="btn" primary ion-button (click)="reservarVaga()">
-            Estacionar
-            <ion-icon name="time-outline"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-col>
-      <ion-col size="10" class="infocar-card" style="display: flex">
-        <ion-col size="5">
-          <span class="title">DEF 5678</span>
-          <br />
-          <span class="car">GOL</span>
-        </ion-col>
-        <ion-col size="7">
-          <button class="btn" primary ion-button (click)="reservarVaga()">
-            Estacionar
+          <button class="btn" primary ion-button (click)="!carro.estacionado ? reservarVaga(carro.carro) : null">
+            {{ !carro.estacionado ? 'Estacionar' : getHoraFinal(carro.estacionado) }}
             <ion-icon name="time-outline"></ion-icon>
           </button>
         </ion-col>

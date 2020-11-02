@@ -14,7 +14,7 @@ export class AppHeaderComponent {
   @Input()
   showButtonHelp: boolean = false;
   @Input()
-  showButtonMenu: boolean = false;
+  showButtonLogout: boolean = false;
   @Input()
   showButtonAddCredits: boolean = false;
   @Input()
@@ -39,7 +39,7 @@ export class AppHeaderComponent {
   }
 
   goToAddCredits() {
-
+    this.navCtrl.navigateForward('/adicionar-creditos');
   }
 
   logout() {
@@ -49,16 +49,4 @@ export class AppHeaderComponent {
       console.log(error);
     });
   }
-
-  // iconeLista() {
-  //   if (this.showButtonList != '') {
-  //     if (this.showButtonList === 'clientes') {
-  //       this.eventEmitter.emit({
-  //         salvar: true
-  //       });
-  //     } else {
-  //       this.navCtrl.navigateForward(this.showButtonList);
-  //     }
-  //   }
-  // }
 }

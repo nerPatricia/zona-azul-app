@@ -1,11 +1,12 @@
+import { ToastService } from './../../service/toast.service';
+import { NgxMaskModule } from 'ngx-mask';
 import { ReservarVagaPage } from './reservar-vaga.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { Routes, RouterModule } from '@angular/router';
 import { AppHeaderModule } from 'src/app/components/app-header/app-header.module';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -17,11 +18,14 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     AppHeaderModule,
+    NgxMaskModule.forRoot(),
     RouterModule.forChild(routes)
   ],
-  providers: [Geolocation, NativeGeocoder],
+  providers: [ToastService],
   declarations: [ReservarVagaPage]
 })
 export class ReservarVagaPageModule {}
