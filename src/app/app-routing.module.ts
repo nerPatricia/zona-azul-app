@@ -32,6 +32,11 @@ const routes: Routes = [
     loadChildren:
       './pages/reservar-vaga/reservar-vaga.module#ReservarVagaPageModule'
   },
+  {
+    path: 'adicionar-creditos',
+    loadChildren:
+      './pages/adicionar-creditos/adicionar-creditos.module#AdicionarCreditosPageModule'
+  },
 ];
 
 @NgModule({

@@ -32,7 +32,9 @@ export class DashboardPage  {
     );
   }
 
-  addCredits() {}
+  addCredits() {
+    this.navCtrl.navigateForward(['adicionar-creditos']);
+  }
 
   reservarVaga() {
     this.navCtrl.navigateForward(['reservar-vaga']);

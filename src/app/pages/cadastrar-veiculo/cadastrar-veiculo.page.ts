@@ -33,7 +33,6 @@ export class CadastrarVeiculoPage implements OnInit {
 
     this.utilitiesService.cadCarros(this.placaData).then(
       (response) => {
-        console.log("entrou no respose");
         Swal.fire('Sucesso', 'Carro cadastrado com sucesso.', 'success').then(
           () => {
             this.navCtrl.navigateForward(['dashboard']);
