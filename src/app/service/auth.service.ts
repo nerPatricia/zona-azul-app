@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 })
 export class AuthService {
   url = environment.url;
+  public token;
 
   constructor(private storage: Storage, private http: HttpClient) { }
 

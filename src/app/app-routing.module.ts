@@ -23,6 +23,11 @@ const routes: Routes = [
       './pages/dashboard/dashboard.module#DashboardPageModule'
   },
   {
+    path: 'cadastrar-veiculo',
+    loadChildren:
+      './pages/cadastrar-veiculo/cadastrar-veiculo.module#CadastrarVeiculoPageModule'
+  },
+  {
     path: 'reservar-vaga',
     loadChildren:
       './pages/reservar-vaga/reservar-vaga.module#ReservarVagaPageModule'

@@ -25,8 +25,8 @@ export class DashboardPage implements OnInit {
     );
 
     this.utilitiesService.getSaldo().then(
-      (response: string) => {
-        this.saldo = response;
+      (response: any) => {
+        this.saldo = response.saldo;
       }, error => {
         console.log(error);
       }
@@ -37,5 +37,9 @@ export class DashboardPage implements OnInit {
 
   reservarVaga() {
     this.navCtrl.navigateForward(['reservar-vaga']);
+  }
+
+  cadastrarVeiculo() {
+    this.navCtrl.navigateForward(['cadastrar-veiculo']);
   }
 }

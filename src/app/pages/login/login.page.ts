@@ -22,7 +22,8 @@ export class LoginPage {
 
   login() {
     this.authService.login(this.userData.email, this.userData.password).then(
-      (response) => {
+      async (response: any) => {
+        await this.authService.saveAuth(response);
         this.router.navigateByUrl('/dashboard');
       }, error => {
         Swal.fire('Usuário e/ou senha inválidos.');

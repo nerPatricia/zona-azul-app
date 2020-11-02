@@ -12,21 +12,45 @@ export class UtilitiesService {
 
   constructor(public http: HttpClient, private authService: AuthService) {}
 
-  getSaldo() {
-    const url = this.url + '/get-saldo';
-    return this.http.get(url).toPromise();
-  }
-
-  getCarros() {
-    const url = this.url + '/get-carros';
-    return this.http.get(url).toPromise();
-  }
-
-  async getEventById(eventId) {
+  async getSaldo() {
     const auth = await this.authService.getAuthData();
-    const url = '/event/' + eventId;
-    const headers = new HttpHeaders({ 'x-access-token': auth.token});
+    const url = this.url + '/get-saldo';
+    const headers = new HttpHeaders({ 'token': auth.token });
     return this.http.get(url, { headers }).toPromise();
   }
 
+  async getCarros() {
+    const auth = await this.authService.getAuthData();
+    const url = this.url + '/get-carros';
+    const headers = new HttpHeaders({ 'token': auth.token });
+    return this.http.get(url, { headers }).toPromise();
+  }
+
+  async cadCarros(carroData) {
+    const auth = await this.authService.getAuthData();
+    const url = this.url + '/cadastrar-carro';
+    const headers = new HttpHeaders({ 'token': auth.token });
+    return this.http.post(url, carroData, { headers }).toPromise();
+  }
+
+  async estacionar(estacionarData) {
+    const auth = await this.authService.getAuthData();
+    const url = this.url + '/get-carros';
+    const headers = new HttpHeaders({ 'token': auth.token });
+    return this.http.post(url, estacionarData, { headers }).toPromise();
+  }
+
+  async getTempoVaga() {
+    const auth = await this.authService.getAuthData();
+    const url = this.url + '/add-credito'; // TODO: arrumar a rota aqui
+    const headers = new HttpHeaders({ 'token': auth.token });
+    return this.http.get(url, { headers }).toPromise();
+  }
+
+  async addCreditos(creditoData) {
+    const auth = await this.authService.getAuthData();
+    const url = this.url + '/add-credito';
+    const headers = new HttpHeaders({ 'token': auth.token });
+    return this.http.post(url, creditoData, { headers }).toPromise();
+  }
 }
